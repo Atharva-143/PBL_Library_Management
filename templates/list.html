@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Available Books</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <style>
+        body 
+        {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f7fc;
+            color: #333;
+        }
+
+        .container 
+        {
+            width: 90%;
+            max-width: 1200px;
+            margin: 30px auto;
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            min-height: 80vh; 
+        }
+
+        h1 
+        {
+            text-align: center;
+            font-size: 2.5em;
+            color: #2C3E50;
+            margin-bottom: 20px;
+        }
+
+        .top-btn 
+        {
+            display: inline-block;
+            background-color: #3498db;
+            color: white;
+            padding: 12px 20px;
+            font-size: 1.1em;
+            text-align: center;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-bottom: 20px; 
+            transition: background-color 0.3s ease;
+            float: right;
+        }
+
+        .top-btn:hover 
+        {
+            background-color: #2980b9;
+        }
+
+        table 
+        {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 30px;
+        }
+
+        th, td 
+        {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th 
+        {
+            background-color: #34495E;
+            color: white;
+            font-size: 1.1em;
+        }
+
+        td 
+        {
+            background-color: #ecf0f1;
+        }
+
+        .book-image 
+        {
+            width: 120px;
+            height: 180px;
+            object-fit: cover;
+            border-radius: 5px;
+        }
+
+        .btn 
+        {
+            display: inline-block;
+            background-color: #3498db;
+            color: white;
+            padding: 12px 20px;
+            font-size: 1.1em;
+            text-align: center;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-top: 20px;
+            transition: background-color 0.3s ease;
+            display: block;
+            width: auto;
+            margin: 20px auto;
+        }
+
+        .btn:hover 
+        {
+            background-color: #2980b9;
+        }
+
+        footer 
+        {
+            text-align: center;
+            padding: 15px;
+            background-color: #34495E;
+            color: white;
+            font-size: 0.9em;
+            margin-top: 40px;
+        }
+
+        @media (max-width: 768px) 
+        {
+            table 
+            {
+                font-size: 0.9em;
+            }
+
+            .book-image 
+            {
+                width: 100px;
+                height: 150px;
+            }
+
+            .container 
+            {
+                width: 95%;
+                padding: 15px;
+            }
+
+            .top-btn 
+            {
+                font-size: 1em;
+                padding: 10px 18px;
+            }
+
+            th, td 
+            {
+                padding: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="{{ url_for('index') }}" class="top-btn">Back to Home</a>
+        <h1>Available Books</h1>
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Title</th>
+                    <th>Author</th>
+                    <th>Availability</th>
+                    <th>Image</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for book in books %}
+                <tr>
+                    <td>{{ book.id }}</td>
+                    <td>{{ book.title }}</td>
+                    <td>{{ book.author }}</td>
+                    <td>{% if book.available %} Available {% else %} Borrowed {% endif %}</td>
+                    <td><img src="{{ url_for('static', filename='images/' + book.image) }}" alt="{{ book.title }}" class="book-image"></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <a href="{{ url_for('index') }}" class="btn">Back to Home</a>
+    </div>
+    
+    <footer>
+        <p>&copy; 2025 Your Library - All Rights Reserved</p>
+    </footer>
+</body>
+</html>

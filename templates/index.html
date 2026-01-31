@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Library Management System</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <style>
+        body 
+        {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f7fc; 
+            margin: 0;
+            padding: 0;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        .container 
+        {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+            text-align: center;
+            background-color: rgba(255, 255, 255, 0.85);
+            flex-grow: 1;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); 
+        }
+
+        h1 
+        {
+            font-size: 3em;
+            color: #2C3E50;
+            margin-bottom: 30px;
+        }
+
+        nav ul 
+        {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        nav ul li 
+        {
+            display: inline-block;
+            margin: 10px;
+        }
+
+        nav ul li a 
+        {
+            display: inline-block;
+            padding: 15px 25px;
+            color: white;
+            text-decoration: none;
+            font-size: 1.1em;
+            border-radius: 5px;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        .list-books-btn 
+        {
+            background-color: #1abc9c;
+        }
+
+        .borrow-book-btn 
+        {
+            background-color: #3498db; 
+        }
+
+        .return-book-btn 
+        {
+            background-color: #9b59b6; 
+        }
+
+        .admin-login-btn 
+        {
+            background-color: #f39c12; 
+        }
+
+        nav ul li a:hover 
+        {
+            transform: translateY(-2px);
+        }
+
+        nav ul li a:active 
+        {
+            transform: translateY(0);
+        }
+
+        footer 
+        {
+            text-align: center;
+            padding: 15px;
+            background-color: #34495E;
+            color: white;
+            font-size: 0.9em;
+        }
+
+        @media (max-width: 768px) 
+        {
+            h1 
+            {
+                font-size: 2.5em;
+            }
+
+            nav ul li 
+            {
+                display: block;
+                margin: 10px 0;
+            }
+
+            nav ul li a 
+            {
+                width: 100%;
+                padding: 12px;
+                font-size: 1em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Welcome to the Library Management System</h1>
+        <nav>
+            <ul>
+                <li><a href="{{ url_for('list_books') }}" class="btn list-books-btn">List Available Books</a></li>
+                <li><a href="{{ url_for('borrow') }}" class="btn borrow-book-btn">Borrow a Book</a></li>
+                <li><a href="{{ url_for('return_book_route') }}" class="btn return-book-btn">Return a Book</a></li>
+                <li><a href="{{ url_for('login') }}" class="btn admin-login-btn">Admin Login</a></li>
+            </ul>
+        </nav>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 Your Library - All Rights Reserved</p>
+    </footer>
+</body>
+</html>

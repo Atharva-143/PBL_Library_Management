@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Send Reminder</title>
+    <style>
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body 
+        {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f7fc;
+            color: #333;
+            padding: 20px;
+        }
+
+       
+        .container 
+        {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+       
+        h1 
+        {
+            color: #2C3E50;
+            margin-bottom: 1.5rem;
+            font-size: 2rem;
+        }
+
+        
+        p 
+        {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            color: #555;
+        }
+
+        p strong 
+        {
+            color: #007bff; 
+        }
+
+        
+        button, a 
+        {
+            display: inline-block;
+            padding: 0.75rem 1.25rem;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 1rem;
+            text-align: center;
+            cursor: pointer;
+            text-decoration: none;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            margin: 0.5rem;
+        }
+
+       
+        button:hover, a:hover 
+        {
+            background-color: #0056b3;
+            transform: translateY(-2px);
+        }
+
+        
+        button:active, a:active 
+        {
+            transform: translateY(0);
+        }
+
+        
+        @media (max-width: 768px) 
+        {
+            .container 
+            {
+                padding: 1.5rem;
+            }
+
+            button, a 
+            {
+                padding: 0.75rem 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Send Reminder</h1>
+        <p>Are you sure you want to send a reminder to <strong>{{ book['user_whatsapp'] }}</strong> to return <strong>{{ book['title'] }}</strong>?</p>
+
+        
+        <form method="POST">
+            <button type="submit">Send Reminder</button>
+        </form>
+
+     
+        <a href="{{ url_for('admin') }}">Cancel</a>
+    </div>
+
+</body>
+</html>

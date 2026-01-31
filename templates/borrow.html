@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Borrow a Book</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <style>
+        body 
+        {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f7fc;
+            margin: 0;
+            padding: 0;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        .container 
+        {
+            width: 90%;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem;
+            text-align: center;
+            background-color: rgba(255, 255, 255, 0.95); 
+            flex-grow: 1;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); 
+        }
+
+        h1 
+        {
+            font-size: 2.5em;
+            color: #2C3E50;
+            margin-bottom: 30px;
+        }
+
+        .form-group 
+        {
+            margin-bottom: 20px;
+            text-align: left;
+        }
+
+        label 
+        {
+            font-weight: bold;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        input[type="text"],
+        input[type="number"] 
+        {
+            width: 100%;
+            padding: 12px;
+            font-size: 1.1em;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            box-sizing: border-box;
+            margin-top: 5px;
+        }
+
+        input[type="text"]:focus,
+        input[type="number"]:focus 
+        {
+            border-color: #3498db; 
+            outline: none;
+        }
+
+        .btn 
+        {
+            padding: 15px 30px;
+            font-size: 1.1em;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            display: inline-block;
+            text-align: center;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            margin-top: 10px;
+        }
+
+        .btn:hover 
+        {
+            transform: translateY(-2px);
+        }
+
+        .borrow-btn 
+        {
+            background-color: #3498db; 
+        }
+
+        .back-btn 
+        {
+            background-color: #9b59b6;
+            width: auto; 
+            margin-top: 20px; 
+        }
+
+        footer 
+        {
+            text-align: center;
+            padding: 15px;
+            background-color: #34495E;
+            color: white;
+            font-size: 0.9em;
+        }
+
+        @media (max-width: 768px) 
+        {
+            h1 
+            {
+                font-size: 2em;
+            }
+
+            .form-group 
+            {
+                text-align: center;
+            }
+
+            .btn 
+            {
+                font-size: 1em;
+                padding: 12px;
+                width: 100%; 
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Borrow a Book</h1>
+        <form method="POST" class="borrow-form">
+            <div class="form-group">
+                <label for="whatsapp">Your WhatsApp Number:</label>
+                <input type="text" id="whatsapp" name="whatsapp" required placeholder="Enter your WhatsApp number (+91xxxxxxxxxx)">
+            </div>
+
+            <div class="form-group">
+                <label for="book_id">Book ID:</label>
+                <input type="number" id="book_id" name="book_id" required placeholder="Enter book ID">
+            </div>
+
+            <div class="form-group">
+                <label for="days">Borrowing Period (in days):</label>
+                <input type="number" id="days" name="days" required placeholder="Enter borrowing period">
+            </div>
+
+            <div class="form-group">
+                <button type="submit" class="btn borrow-btn">Borrow</button>
+            </div>
+        </form>
+
+        <a href="{{ url_for('index') }}" class="btn back-btn">Back to Home</a>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 Your Library - All Rights Reserved</p>
+    </footer>
+</body>
+</html>
